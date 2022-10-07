@@ -13,7 +13,14 @@ public final class App {
      * @param args The CLI arguments passed
      */
     public static void main(String... args) {
-
+        List<List<String>> records = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader("book.csv"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split(COMMA_DELIMITER);
+                records.add(Arrays.asList(values));
+            }
+        }
         // Your preparation code …
 
         String dayWithSmallestTempSpread = "Someday";     // Your day analysis function call …
