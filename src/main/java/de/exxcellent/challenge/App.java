@@ -20,13 +20,14 @@ public final class App {
      * This is the main entry method of your program.
      * @param args The CLI arguments passed
      */
-    public static void main(String... args) {
-        // Your preparation code …
+    public static void main(String... args) throws IOException {
+        List<List<String>> weatherList = readFileToList("weather.csv");
+        List<List<String>> footballList = readFileToList("football.csv");
 
-        String dayWithSmallestTempSpread = "Someday";     // Your day analysis function call …
+        String dayWithSmallestTempSpread = calcSmallestSpread(weatherList, "MxT", "MnT");
         System.out.printf("Day with smallest temperature spread : %s%n", dayWithSmallestTempSpread);
 
-        String teamWithSmallestGoalSpread = "A good team"; // Your goal analysis function call …
+        String teamWithSmallestGoalSpread = calcSmallestSpread(footballList, "Goals", "Goals Allowed");
         System.out.printf("Team with smallest goal spread       : %s%n", teamWithSmallestGoalSpread);
     }
 
